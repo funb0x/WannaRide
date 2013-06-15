@@ -27,10 +27,7 @@ public class RegisterController {
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
     public String showRegisterPage(Map<String, Object> model){
         Client client = new Client();
-        User user = new User();
         model.put("client", client);
-        model.put("user", user);
-
         return "user/register";
     }
 

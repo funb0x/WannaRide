@@ -3,6 +3,7 @@ package com.wannaride.dataAccess.impl;
 import com.wannaride.dataAccess.GenericDAO;
 import com.wannaride.entity.Client;
 import com.wannaride.entity.Role;
+import com.wannaride.entity.TripProvider;
 import com.wannaride.entity.User;
 import static org.junit.Assert.*;
 
@@ -17,8 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/testDataAccessContext.xml"})
-public class GenericDAOImplTest {
+@ContextConfiguration(locations = {"/testDataAccessContextInMemoryDB.xml"})
+public class GenericDAOImplTestInMemoryDB {
 
     @Autowired
     @Qualifier("genericDAO")
@@ -31,7 +32,7 @@ public class GenericDAOImplTest {
         for(Role r:roles) System.out.println("role = " + r);
 
         assertNotNull(roles);
-        assertTrue(roles.size() == 3);
+        assertTrue(roles.size() > 0);
     }
 
     @Test
@@ -41,7 +42,7 @@ public class GenericDAOImplTest {
         for(User u:users) System.out.println("user = " + u);
 
         assertNotNull(users);
-        assertTrue(users.size() == 3);
+        assertTrue(users.size() > 0);
     }
 
     @Ignore
@@ -52,6 +53,17 @@ public class GenericDAOImplTest {
         for(Client c:clients) System.out.println("client = " + c);
 
         assertNotNull(clients);
-        assertTrue(clients.size() == 3);
+        assertTrue(clients.size() > 0);
+    }
+
+    @Ignore
+    @Test
+    public void listTripProvidersTest() {
+        List<TripProvider> tripProviders = dao.getAll(TripProvider.class);
+
+        for(TripProvider tp:tripProviders) System.out.println("trip provider = " + tp);
+
+        assertNotNull(tripProviders);
+        assertTrue(tripProviders.size() > 0);
     }
 }

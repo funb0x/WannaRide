@@ -17,8 +17,6 @@ public class ClientValidator implements Validator{
     @Autowired
     private UserDAO userDAO;
 
-
-
     @Override
     public boolean supports(Class<?> clazz) {
         return Client.class.equals(clazz);

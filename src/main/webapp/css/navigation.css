@@ -1,0 +1,77 @@
+nav {
+	margin: 0 auto;
+    top: 10px;
+    width: 845px;
+    padding: 0;
+    position: relative;
+    margin-left: 200px;
+}
+nav li {
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    list-style: none outside none;
+    overflow: visible;
+    position: relative;
+    z-index: 1000;
+}
+nav li.sep {
+    background: url("images/menu-sep.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+    width: 2px;
+}
+nav li a {
+    background: url("images/menu-bg.png") repeat-x scroll 0 0 transparent;
+    /*background: #1312ff;*/
+    color: white;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    padding: 0 20px;
+    text-decoration: none;
+    z-index: 100;
+}
+nav li.first b {
+    background: url("images/menu-l.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 40px;
+    width: 7px;
+}
+nav li.first .sub {
+    left: 10px;
+}
+nav li.last .sub {
+    left: auto;
+    right: 10px;
+}
+nav li.last b {
+    background: url("images/menu-r.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 40px;
+    width: 7px;
+}
+nav li:hover a {
+    background: url("images/menu-bg-active.png") repeat-x scroll 0 0 transparent;
+    height: 40px;
+}
+nav li.current a {
+    background: url("images/menu-bg-active.png") repeat-x scroll 0 0 transparent;
+    height: 40px;
+}
+nav li.current.first b {
+    background: url("images/menu-l-active.png") no-repeat scroll 0 0 transparent;
+}
+nav li.current.last b {
+    background: url("images/menu-r-active.png") no-repeat scroll 0 0 transparent;
+}
+nav li.first:hover b {
+    background: url("images/menu-l-active.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+}
+nav li.last:hover b {
+    background: url("images/menu-r-active.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+}

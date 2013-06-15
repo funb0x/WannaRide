@@ -14,6 +14,15 @@ create memory table USERS (
   CELL    VARCHAR(16) not null
 );
 
+alter table USERS
+add constraint FK_USERS_USER_ROLE_ROLE foreign key (ID_ROLE)
+references ROLES (ID_ROLE)
+  on delete restrict on update restrict;
+
+ALTER TABLE users ADD CONSTRAINT uniquelogin UNIQUE (login);
+
+ALTER TABLE users ADD CONSTRAINT uniqueemail UNIQUE (email);
+
 DROP TABLE CLIENT IF EXISTS;
 create memory table CLIENT (
   ID_USER INTEGER PRIMARY KEY,
@@ -21,16 +30,31 @@ create memory table CLIENT (
   LAST_NAME VARCHAR(36) not null
 );
 
-alter table USERS
-add constraint FK_USERS_USER_ROLE_ROLE foreign key (ID_ROLE)
-references ROLES (ID_ROLE)
-  on delete restrict on update restrict;
-
 alter table CLIENT
 add constraint FK_CLIENT_RELATIONS_USERS foreign key (ID_USER)
 references USERS (ID_USER)
   on delete restrict on update restrict;
 
-ALTER TABLE users ADD CONSTRAINT uniquelogin UNIQUE (login);
+DROP TABLE TRIP_PROVIDER IF EXISTS;
+create memory table TRIP_PROVIDER (
+  ID_USER INTEGER PRIMARY KEY,
+  TP_NAME VARCHAR(36) not null
+);
 
-ALTER TABLE users ADD CONSTRAINT uniqueemail UNIQUE (email);
+alter table TRIP_PROVIDER
+add constraint FK_TP_RELATIONS_USERS foreign key (ID_USER)
+references USERS (ID_USER)
+  on delete restrict on update restrict;
+
+DROP TABLE TRANSPORT IF EXISTS;
+create memory table TRANSPORT (
+  ID_TRANSPORT INTEGER PRIMARY KEY,
+  ID_USER INTEGER NOT NULL,
+  SEATS_NUMBER INTEGER NOT NULL,
+  TRANSPORT_DESCRIPTION VARCHAR(2048) NOT NULL
+);
+
+alter table TRANSPORT
+add constraint FK_TRANSPORT_TP foreign key (ID_USER)
+references USERS (ID_USER)
+  on delete restrict on update restrict;

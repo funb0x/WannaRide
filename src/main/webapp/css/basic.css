@@ -1,0 +1,19 @@
+body{
+	margin-top: 10px;
+	margin: 0 auto;
+	width: 845px;
+    color: black;
+    background: silver;
+    font-family: Verdana, sans-serif;
+    font-size: x-small;
+}
+
+article {
+	background-color: silver;
+    position: absolute;
+    margin: 0 auto;
+    top: 50px;
+    width: 845px;
+    height: 100%;
+    padding: 0;
+}
